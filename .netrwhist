@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/haiyang/gem5-stable/src/mem/ruby/network'
+let g:netrw_dirhist_2='/home/haiyang/.vim'
+let g:netrw_dirhist_3='/home/haiyang/.ssh'
