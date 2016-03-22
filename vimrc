@@ -16,6 +16,9 @@
 "     3. Files and Backup          FLBK
 "     4. Colors and Fonts          CLFT
 "     5. Tab and Indent            TBIT
+"     6. Visual Mode               VSMD
+"     7. Search, Tabs, Windows     STWN
+"     8. Status Line               STLN
 "------------------------------------------------------------------------------------------
 
 "=========================================================
@@ -82,18 +85,6 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-" Ignore case when searching
-set ignorecase
-
-" When search contains CAPITAL letters, do case-sensitive searching
-set smartcase
-
-" Do incremental searching
-set incsearch		
-
-" After a search, ESC switches of highlighting
-nnoremap <leader><space> :nohl<cr>
-
 " For regular expressions turn magic on
 set magic
 
@@ -128,7 +119,6 @@ set whichwrap+=<,>
 set noerrorbells
 set novisualbell
 set vb t_vb=
-
 
 "=========================================================
 "	3. Files and Backup
@@ -185,3 +175,56 @@ set expandtab
 " Make 1 tab = 4 spaces
 set shiftwidth=4
 set softtabstop=4
+
+" Turn on auto indent
+set autoindent
+
+" Turn off smart indent since filetype indent is on
+"set smartindent
+
+
+"=========================================================
+"	6. Visual Mode
+"=====================================================VSMD
+
+" Visual mode pressing * or # searches for the current selection
+" " Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+
+
+"=========================================================
+"	7. Search, Tabs, Windows
+"=====================================================STWN
+
+" Map <space> to / (search)
+map <space> /
+
+" Ignore case when searching
+set ignorecase
+
+" When search contains CAPITAL letters, do case-sensitive searching
+set smartcase
+
+" Do incremental searching
+set incsearch		
+
+" After a search, <leader> + <space> switches of highlighting
+nnoremap <leader><space> :nohl<cr>
+
+" Tab navigation with H and L
+nnoremap H gT
+nnoremap L gt
+" Close tabs with X, open new tabs with T
+nnoremap X :tabclose<CR>
+nnoremap T :tabedit<space>
+
+
+"=========================================================
+"	8. Status Line
+"=====================================================STLN
+
+" Always show the status line
+set laststatus=2
+
+" TODO: Use a status line plugin
