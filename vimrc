@@ -11,6 +11,7 @@
 "
 " Sections
 "     *** Jump to each section by searching for the tags
+"     0. Vundle Necessary          VNDL
 "     1. General Settings          GSTG
 "     2. VIM UI                    VIUI
 "     3. Files and Backup          FLBK
@@ -22,23 +23,54 @@
 "------------------------------------------------------------------------------------------
 
 "=========================================================
-"	1. General Settings
-"=====================================================GSTG
+"	0.Vundle Necessary
+"=====================================================VNDL
+
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+
+" Nerd Commenter
+Plugin 'scrooloose/nerdcommenter'
+
+" All Plugins must be added before the following line
+call vundle#end()            " required
 
 " Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+" ******** Non-Plugin stuff after this line
+
+"=========================================================
+"	1. General Settings
+"=====================================================GSTG
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
 endif
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
 
 " keep 200 lines of command line history
 set history=200		
@@ -66,6 +98,9 @@ set backspace=indent,eol,start
 " Show the cursor position all the time
 set ruler
 
+" Show line number
+set number
+
 " Display incomplete commands in the lower right corner
 set showcmd
 
@@ -74,6 +109,9 @@ set showcmd
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
+
+" For C/C++, turn on C style indent
+autocmd FileType c,cpp : set cindent
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
