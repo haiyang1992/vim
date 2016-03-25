@@ -20,10 +20,11 @@
 "     6. Visual Mode               VSMD
 "     7. Search, Tabs, Windows     STWN
 "     8. Status Line               STLN
+"     9. MISC Mappings             MPNG
 "------------------------------------------------------------------------------------------
 
 "=========================================================
-"	0.Vundle Necessary
+"	0. Vundle Necessary
 "=====================================================VNDL
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -75,16 +76,14 @@ endif
 " keep 200 lines of command line history
 set history=200		
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 " Set leader key to <comma>
 let mapleader = ","
 let g:mapleader = ","
 
 " In many terminal emulators the mouse works just fine, thus enable it.
+" Disable mouse for now
 if has('mouse')
-  set mouse=a
+  set mouse-=a
 endif
 
 
@@ -101,8 +100,14 @@ set ruler
 " Show line number
 set number
 
+" Highlight current line
+set cursorline
+
 " Display incomplete commands in the lower right corner
 set showcmd
+
+" Show mode in status
+set showmode
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -144,7 +149,7 @@ set wildmenu
 set wildmode=longest:list,full
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,*.sw,*.bak
 
 " Set height of command bar to 2
 set cmdheight=2
@@ -183,7 +188,6 @@ endif
 "=========================================================
 "	4. Colors and Fonts 
 "=====================================================CLFT
-"
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -266,3 +270,19 @@ nnoremap T :tabedit<space>
 set laststatus=2
 
 " TODO: Use a status line plugin
+
+
+"=========================================================
+"	0. Misc Mappings
+"=====================================================MPNG
+
+" Swich ; and : to save my pinky finger
+nnoremap ; :
+nnoremap : ;
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" F5 toggles paste mode
+nnoremap <F5> :set invpaste paste?<CR>
+set pastetoggle=<F2>
