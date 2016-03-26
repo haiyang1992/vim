@@ -21,6 +21,7 @@
 "     7. Search, Tabs, Windows     STWN
 "     8. Status Line               STLN
 "     9. MISC Mappings             MPNG
+"    10. Plugin Specific           PLGN
 "------------------------------------------------------------------------------------------
 
 "=========================================================
@@ -45,6 +46,13 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Nerd Commenter
 Plugin 'scrooloose/nerdcommenter'
+
+" Tagslist
+Plugin 'taglist.vim'
+
+" Nerd Tree with Tabs
+Plugin 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 
 " All Plugins must be added before the following line
 call vundle#end()            " required
@@ -184,6 +192,8 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" Automatically change current working directory
+autocmd BufEnter * silent! lcd %:p:h
 
 "=========================================================
 "	4. Colors and Fonts 
@@ -273,7 +283,7 @@ set laststatus=2
 
 
 "=========================================================
-"	0. Misc Mappings
+"	9. Misc Mappings
 "=====================================================MPNG
 
 " Swich ; and : to save my pinky finger
@@ -286,3 +296,39 @@ map Q gq
 " F5 toggles paste mode
 nnoremap <F5> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+
+"=========================================================
+"	10. Plugin Specific 
+"=====================================================PLGN
+
+"---------- Taglist ----------
+
+let Tlist_Inc_Winwidth=0
+" Open TagList window on startup
+"let Tlist_Auto_Open=1
+
+" Use <F8> to toggle TagList window on/off
+nnoremap <silent> <F8> :TlistToggle<CR>
+
+" Only show the tags of currenet file
+let Tlist_Show_One_File=1
+
+" To process files even when the taglist window is not open
+let Tlist_Process_File_Always=1
+
+" Quit Vim if TagList is the only window left
+let Tlist_Exit_OnlyWindow=1
+
+" Keep TagList window on the right
+let Tlist_Use_Right_Window=1
+
+"---------- NerdTree and NERDTreeTabs ----------
+
+" Quit if NERDTree is the last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Use <F3> to toggle NERDTreeTabs window
+map <F3> <plug>NERDTreeTabsToggle<CR>
+
+" Start NerdTreeTabs automatically with consoles
+let g:nerdtree_tabs_open_on_console_startup=1
