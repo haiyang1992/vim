@@ -6,7 +6,7 @@
 " 	Ph.D. of Computer Engineering
 " 	Northwestern University
 "	haiyang1992@gmail.com
-" 
+"
 " Backed up at https://github.com/haiyang1992/vim
 "
 " Sections
@@ -54,6 +54,15 @@ Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 
+" Airline for status line
+Plugin 'bling/vim-airline'
+
+" Theme support for airline
+Plugin 'vim-airline/vim-airline-themes'
+
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+
 " All Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -82,7 +91,7 @@ if v:progname =~? "evim"
 endif
 
 " keep 200 lines of command line history
-set history=200		
+set history=200
 
 " Set leader key to <comma>
 let mapleader = ","
@@ -144,7 +153,7 @@ set showmatch
 " Blink the matching bracket for 2 tenths of a second
 set mat=2
 
-" Always keep current line in center 
+" Always keep current line in center
 nnoremap j jzz
 nnoremap k kzz
 nnoremap G Gzz
@@ -189,14 +198,14 @@ nmap <leader>w :w!<cr>
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+  \ | wincmd p | diffthis
 endif
 
 " Automatically change current working directory
 autocmd BufEnter * silent! lcd %:p:h
 
 "=========================================================
-"	4. Colors and Fonts 
+"	4. Colors and Fonts
 "=====================================================CLFT
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -212,7 +221,6 @@ set t_Co=16
 let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
-
 
 "=========================================================
 "	5. Tabs and Indent
@@ -259,7 +267,7 @@ set ignorecase
 set smartcase
 
 " Do incremental searching
-set incsearch		
+set incsearch
 
 " After a search, <leader> + <space> switches of highlighting
 nnoremap <leader><space> :nohl<cr>
@@ -298,7 +306,7 @@ nnoremap <F5> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
 "=========================================================
-"	10. Plugin Specific 
+"	10. Plugin Specific
 "=====================================================PLGN
 
 "---------- Taglist ----------
@@ -332,3 +340,33 @@ map <F3> <plug>NERDTreeTabsToggle<CR>
 
 " Start NerdTreeTabs automatically with consoles
 let g:nerdtree_tabs_open_on_console_startup=1
+
+"---------- Airline ----------
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
