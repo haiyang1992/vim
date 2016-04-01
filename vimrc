@@ -44,6 +44,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 
+" Solarized theme
+Plugin 'altercation/vim-colors-solarized'
+
 " Nerd Commenter
 Plugin 'scrooloose/nerdcommenter'
 
@@ -217,8 +220,17 @@ endif
 
 " Use Solarized color scheme
 " Use Terminal's color pallete
-set t_Co=16
-let g:solarized_termcolors=16
+
+" TODO
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+    let g:solarized_termcolors=256
+else
+    set t_Co=256
+    let g:solarized_termcolors=256
+endif
+
+call togglebg#map("<F9>")
 set background=dark
 colorscheme solarized
 
