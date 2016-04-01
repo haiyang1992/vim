@@ -220,19 +220,29 @@ endif
 
 " Use Solarized color scheme
 " Use Terminal's color pallete
-
-" TODO
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-    let g:solarized_termcolors=256
-else
-    set t_Co=256
-    let g:solarized_termcolors=256
-endif
+set t_Co=16
+let g:solarized_termcolors=16
 
 call togglebg#map("<F9>")
 set background=dark
 colorscheme solarized
+
+" Use F4 to toggle color modes, so as to be compatible with SSH client
+nnoremap <F4> : call BGToggle()<cr>
+
+function! BGToggle()
+    if g:solarized_termcolors==16
+	set t_Co=256
+	let g:solarized_termcolors=256
+        set background=dark
+	colorscheme solarized
+    else
+	set t_Co=16
+	let g:solarized_termcolors=16
+        set background=dark
+	colorscheme solarized
+    endif
+endfunction
 
 "=========================================================
 "	5. Tabs and Indent
