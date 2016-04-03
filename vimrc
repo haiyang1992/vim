@@ -66,6 +66,10 @@ Plugin 'vim-airline/vim-airline-themes'
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 
+" Automatically switch between relative and absolute line numbering in
+" different modes
+Bundle "myusuf3/numbers.vim"
+
 " All Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -101,9 +105,9 @@ let mapleader = ","
 let g:mapleader = ","
 
 " In many terminal emulators the mouse works just fine, thus enable it.
-" Disable mouse for now
+" Enable mouse for now
 if has('mouse')
-  set mouse-=a
+  set mouse=a
 endif
 
 
@@ -232,15 +236,15 @@ nnoremap <F4> : call BGToggle()<cr>
 
 function! BGToggle()
     if g:solarized_termcolors==16
-	set t_Co=256
-	let g:solarized_termcolors=256
+        set t_Co=256
+        let g:solarized_termcolors=256
         set background=dark
-	colorscheme solarized
+        colorscheme solarized
     else
-	set t_Co=16
-	let g:solarized_termcolors=16
+        set t_Co=16
+        let g:solarized_termcolors=16
         set background=dark
-	colorscheme solarized
+        colorscheme solarized
     endif
 endfunction
 
@@ -308,8 +312,6 @@ nnoremap T :tabedit<space>
 
 " Always show the status line
 set laststatus=2
-
-" TODO: Use a status line plugin
 
 
 "=========================================================
