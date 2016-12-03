@@ -33,6 +33,11 @@
 set nocompatible
 filetype off                  " required
 
+" Set encoding displayed
+set encoding=utf-8
+" Set encoding written to file
+set fileencoding=utf-8
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
