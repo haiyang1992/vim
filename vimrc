@@ -225,6 +225,7 @@ endif
 " Use Solarized color scheme
 " Use Terminal's color pallete
 set t_Co=16
+let g:solarized_termtrans=1
 let g:solarized_termcolors=16
 
 call togglebg#map("<F9>")
