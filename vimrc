@@ -335,6 +335,14 @@ map Q gq
 nnoremap <F5> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
+" iTerm2 mappings
+:map <C-a> <Home>
+:imap <C-a> <Home>
+:cmap <C-a> <Home>
+:map <C-e> <End>
+:imap <C-e> <End>
+:cmap <C-e> <End>
+
 "=========================================================
 "	10. Plugin Specific
 "=====================================================PLGN
