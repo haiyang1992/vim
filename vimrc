@@ -70,6 +70,10 @@ Plug 'tpope/vim-fugitive'
 " different modes
 Plug 'myusuf3/numbers.vim'
 
+" Icons for NerdTree
+" Always add this last
+Plug 'ryanoasis/vim-devicons'
+
 " All Plugins must be added before the following line
 call plug#end()            " required
 
