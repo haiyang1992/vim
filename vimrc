@@ -43,7 +43,9 @@ call plug#begin('~/.vim/plugged')
 " Keep Plugin commands between plug#begin() and plug#()end.
 
 " Solarized theme
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
+" One Dark Pro theme
+Plug 'joshdick/onedark.vim'
 
 " Nerd Commenter
 Plug 'scrooloose/nerdcommenter'
@@ -200,6 +202,9 @@ autocmd BufEnter * silent! lcd %:p:h
 "	4. Colors and Fonts
 "=====================================================CLFT
 
+" Use Terminal's color pallete
+set t_Co=16
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -207,32 +212,27 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Use Solarized color scheme
-" Use Terminal's color pallete
-set t_Co=16
-let g:solarized_termtrans=1
-let g:solarized_termcolors=16
+" Use One Dark Pro theme
 
-call togglebg#map("<F9>")
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
 set background=dark
-colorscheme solarized
-
-" Use F4 to toggle color modes, so as to be compatible with SSH client
-nnoremap <F4> : call BGToggle()<cr>
-
-function! BGToggle()
-    if g:solarized_termcolors==16
-        set t_Co=256
-        let g:solarized_termcolors=256
-        set background=dark
-        colorscheme solarized
-    else
-        set t_Co=16
-        let g:solarized_termcolors=16
-        set background=dark
-        colorscheme solarized
-    endif
-endfunction
+let g:onedark_termcolors=16
+colorscheme onedark
 
 "=========================================================
 "	5. Tabs and Indent
@@ -366,6 +366,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
+let g:airline_theme='onedark'
+
 " unicode symbols
 "let g:airline_left_sep = '»'
 "let g:airline_left_sep = '▶'
@@ -381,10 +383,10 @@ endif
 "let g:airline_symbols.whitespace = 'Ξ'
 
 " airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g:airline_symbols.linenr = ''
