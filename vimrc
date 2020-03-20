@@ -70,6 +70,9 @@ Plug 'tpope/vim-fugitive'
 " different modes
 Plug 'myusuf3/numbers.vim'
 
+" Fuzzy search
+Plug 'ctrlpvim/ctrlp.vim'
+
 " Icons for NerdTree
 " Always add this last
 Plug 'ryanoasis/vim-devicons'
