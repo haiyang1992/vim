@@ -363,6 +363,10 @@ map <F3> <plug>NERDTreeTabsToggle<CR>
 " Start NerdTreeTabs automatically with consoles
 let g:nerdtree_tabs_open_on_console_startup=1
 
+"---------- NerdCommenter ----------
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
+
 "---------- Airline ----------
 let g:airline_powerline_fonts = 1
 
