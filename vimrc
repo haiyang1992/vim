@@ -162,7 +162,7 @@ set wildmenu
 set wildmode=longest:list,full
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.sw,*.bak
+set wildignore=*.o,*~,*.pyc,*.sw,*.bak,*.swp
 
 " Set height of command bar to 2
 set cmdheight=2
@@ -175,6 +175,27 @@ set whichwrap+=<,>
 set noerrorbells
 set novisualbell
 set vb t_vb=
+
+" Enable wrapping
+set wrap
+" Avoid wrapping a line in the middle of a word
+set linebreak
+
+" Set window title
+set title
+
+" Redraw only when we want to, skipping macros
+set lazyredraw
+
+" Enable folding
+set foldenable 
+
+" Open most folds by default
+set foldlevelstart=10
+
+" Fold by indent
+set foldmethod=indent
+
 
 "=========================================================
 "	3. Files and Backup
