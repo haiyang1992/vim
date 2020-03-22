@@ -42,8 +42,8 @@ call plug#begin('~/.vim/plugged')
 
 " Keep Plugin commands between plug#begin() and plug#()end.
 
-" Material theme
-Plug 'dikiaap/minimalist'
+" One Dark Pro theme
+Plug 'joshdick/onedark.vim'
 
 " Nerd Commenter
 Plug 'scrooloose/nerdcommenter'
@@ -131,9 +131,6 @@ set showmode
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text setlocal textwidth=78
 
-" For C/C++, turn on C style indent
-autocmd FileType c,cpp : set cindent
-
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
@@ -217,7 +214,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Use Material(Minimalist) theme
+" Use One Dark theme
 
 " For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
 if (has('nvim'))
@@ -231,7 +228,7 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-colorscheme minimalist
+colorscheme onedark
 
 "=========================================================
 "	5. Tabs and Indent
@@ -243,6 +240,9 @@ set expandtab
 " Use smart tabs, not needed when shiftwidth == softtabstop
 "set smarttab
 
+" When shifting lines, round the indentation to the nearest multiple of shiftwidth
+set shiftround
+
 " Make 1 tab = 4 spaces
 set shiftwidth=4
 set softtabstop=4
@@ -250,8 +250,10 @@ set softtabstop=4
 " Turn on auto indent
 set autoindent
 
-" Turn off smart indent since filetype indent is on
-"set smartindent
+" Turn on smartindent when not in c/cpp
+set smartindent
+" For C/C++, turn on C style indent
+autocmd FileType c,cpp : set cindent
 
 
 "=========================================================
