@@ -208,7 +208,7 @@ autocmd BufEnter * silent! lcd %:p:h
 "=====================================================CLFT
 
 " Use Terminal's color pallete
-set t_Co=16
+set t_Co=256
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
