@@ -43,7 +43,7 @@ call plug#begin('~/.vim/plugged')
 " Keep Plugin commands between plug#begin() and plug#()end.
 
 " Material theme
-Plug 'kaicataldo/material.vim'
+Plug 'dikiaap/minimalist'
 
 " Nerd Commenter
 Plug 'scrooloose/nerdcommenter'
@@ -217,7 +217,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Use Material theme
+" Use Material(Minimalist) theme
 
 " For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
 if (has('nvim'))
@@ -231,8 +231,7 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-let g:material_theme_style = 'darker'
-colorscheme material
+colorscheme minimalist
 
 "=========================================================
 "	5. Tabs and Indent
