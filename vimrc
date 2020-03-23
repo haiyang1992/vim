@@ -102,6 +102,9 @@ if has('mouse')
   set mouse=a
 endif
 
+" Spell checking
+set spelllang=en-us
+
 
 "=========================================================
 "	2. VIM UI
@@ -128,8 +131,8 @@ set showmode
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
-" For all text files set 'textwidth' to 78 characters.
-autocmd FileType text setlocal textwidth=78
+" For all text files set 'textwidth' to 80 characters.
+autocmd FileType text setlocal textwidth=80
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -187,8 +190,11 @@ set title
 " Redraw only when we want to, skipping macros
 set lazyredraw
 
+" Send more characters in a fast terminal
+set ttyfast
+
 " Enable folding
-set foldenable 
+set foldenable
 
 " Open most folds by default
 set foldlevelstart=10
@@ -225,8 +231,10 @@ autocmd BufEnter * silent! lcd %:p:h
 "	4. Colors and Fonts
 "=====================================================CLFT
 
-" Use Terminal's color pallete
-set t_Co=256
+" Use Terminal's color pallette
+if $TERM == 'xterm-256color'
+  set t_Co=256
+endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -344,6 +352,9 @@ set pastetoggle=<F2>
 :map <C-e> <End>
 :imap <C-e> <End>
 :cmap <C-e> <End>
+" For Option+Right jumping
+nnoremap f w
+
 
 "=========================================================
 "	10. Plugin Specific
@@ -380,6 +391,8 @@ map <F3> <plug>NERDTreeTabsToggle<CR>
 
 " Start NerdTreeTabs automatically with consoles
 let g:nerdtree_tabs_open_on_console_startup=1
+
+let g:NERDTreeIgore=['.DS_Store']
 
 "---------- NerdCommenter ----------
 vmap ++ <plug>NERDCommenterToggle
